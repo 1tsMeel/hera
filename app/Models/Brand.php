@@ -9,6 +9,11 @@ class Brand extends Model
 {
     use HasFactory;
 
+    // Asignación masiva
+    protected $fillable = [
+        'name'
+    ];
+
     // Relación uno a muchos
     public function products(){
         return $this->hasMany(Product::class);

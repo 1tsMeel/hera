@@ -9,6 +9,11 @@ class Feature extends Model
 {
     use HasFactory;
 
+    // Asignación masiva
+    protected $fillable = [
+        'description'
+    ];
+
     // Relación muchos a muchos
     public function products(){
         return $this->belongsToMany(Product::class)

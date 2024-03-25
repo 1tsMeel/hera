@@ -9,6 +9,19 @@ class Product extends Model
 {
     use HasFactory;
 
+    // Asignación masiva
+    protected $fillable = [
+        'brand_id',
+        'type_id',
+        'name',
+        'unit',
+        'image_path',
+        'code',
+        'outstanding',
+        'new',
+        'sold'
+    ];
+
     // Relación uno a muchos inversa
     public function type(){
         return $this->belongsTo(Type::class);

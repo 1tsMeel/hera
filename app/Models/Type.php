@@ -9,6 +9,12 @@ class Type extends Model
 {
     use HasFactory;
 
+    // Asignación masiva
+    protected $fillable = [
+        'name',
+        'classification_id'
+    ];
+
     // Relación uno a muchos inversa
     public function classification(){
         return $this->belongsTo(Classification::class);
