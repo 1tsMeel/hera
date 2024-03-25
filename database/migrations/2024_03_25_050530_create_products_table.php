@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->foreignId('brand_id')
                 ->constrained();
-            $table->foreignId('model_id')
+            $table->foreignId('type_id')
                 ->constrained();
             $table->string('name');
             $table->string('unit');
