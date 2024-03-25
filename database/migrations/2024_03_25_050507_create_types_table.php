@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->foreignId('clasification_id')
+            $table->foreignId('classification_id')
                 ->constrained();
 
             $table->timestamps();
