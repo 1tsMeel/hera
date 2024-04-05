@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-home-layout>
     <!-- Container for demo purpose -->
     <div class="container my-24 mx-auto md:px-6">
         <!-- Section: Design Block -->
@@ -129,4 +129,4 @@
         <!-- Section: Design Block -->
     </div>
     <!-- Container for demo purpose -->
-</x-app-layout>
+</x-home-layout>
