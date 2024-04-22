@@ -8,6 +8,12 @@
     ],
 ]">
 
+    <x-slot name="action">
+        <a class="btn btn-blue" href="{{ route('admin.classifications.create') }}">
+            Nueva
+        </a>
+    </x-slot>
+
     @if ($classifications->count())
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

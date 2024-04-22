@@ -13,7 +13,7 @@ class ClassificationController extends Controller
      */
     public function index()
     {
-        $classifications = Classification::paginate();
+        $classifications = Classification::orderBy('name')->paginate(10);
         return view('admin.classifications.index', compact('classifications'));
     }
 
@@ -22,7 +22,7 @@ class ClassificationController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.classifications.create');
     }
 
     /**
@@ -30,7 +30,13 @@ class ClassificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        Classification::create($request->all());
+
+        return redirect()->route('admin.classifications.index');
     }
 
     /**
