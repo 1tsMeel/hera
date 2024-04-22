@@ -5,8 +5,16 @@
             'name' => 'Dashboard',
             'route' => route('admin.dashboard'),
             'hasNumbers' => null,
-            'active' => request()->routeIs('admin.dashboard')
-        ]
+            'active' => request()->routeIs('admin.dashboard'),
+        ],
+        [
+            // Clasificaciones de productos
+            'icon' => 'fa-solid fa-box-open',
+            'name' => 'Clasificaciones',
+            'route' => route('admin.classifications.index'),
+            'hasNumbers' => null,
+            'active' => request()->routeIs('admin.classifications.*'),
+        ],
     ];
 @endphp
 
@@ -17,7 +25,7 @@
         '-translate-x-full ease-in': !sidebarOpen
     }"
     aria-label="Sidebar">
-    
+
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             @foreach ($links as $link)
@@ -30,7 +38,8 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">{{ $link['name'] }}</span>
 
                         @if ($link['hasNumbers'] != null)
-                            <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $link['hasNumbers'] }}</span>
+                            <span
+                                class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $link['hasNumbers'] }}</span>
                         @endif
                     </a>
                 </li>

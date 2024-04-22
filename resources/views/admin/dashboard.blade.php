@@ -3,6 +3,7 @@
         'name' => 'Dashboard',
     ],
 ]">
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="card">
             <div class="flex items-center">
@@ -31,4 +32,5 @@
             </h2>
         </div>
     </div>
+    
 </x-admin-layout>
