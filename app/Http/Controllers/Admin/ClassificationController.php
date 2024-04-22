@@ -52,7 +52,7 @@ class ClassificationController extends Controller
      */
     public function edit(Classification $classification)
     {
-        //
+        return view('admin.classifications.edit', compact('classification'));
     }
 
     /**
@@ -60,7 +60,13 @@ class ClassificationController extends Controller
      */
     public function update(Request $request, Classification $classification)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $classification->update($request->all());
+
+        return redirect()->route('admin.classifications.edit', $classification);
     }
 
     /**
