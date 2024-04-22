@@ -28,7 +28,10 @@
                             <i class="{{ $link['icon'] }}"></i>
                         </span>
                         <span class="flex-1 ms-3 whitespace-nowrap">{{ $link['name'] }}</span>
-                        <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+
+                        @if ($link['hasNumbers'] != null)
+                            <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ $link['hasNumbers'] }}</span>
+                        @endif
                     </a>
                 </li>
             @endforeach
