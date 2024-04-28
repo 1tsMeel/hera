@@ -14,8 +14,16 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                rubik: "'Rubik', sans-serif",
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans]
             },
+            colors: {
+                'primary': '#44355B',
+                'secondary': '#31263E',
+                'tertiary': '#221E22',
+                'enf-1': 'ECA72C',
+                'enf-2': 'EE5622'
+            }
         },
     },
 
