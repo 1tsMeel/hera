@@ -16,7 +16,7 @@ class Feature extends Model
 
     // Relación muchos a muchos
     public function products(){
-        return $this->belongsToMany(Product::class)
+        return $this->belongsToMany(Product::class, 'product_feature')
                     ->withTimestamps();
     }
 }

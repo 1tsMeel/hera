@@ -21,10 +21,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('unit');
             $table->string('image_path');
-            $table->string('code');
-            $table->boolean('outstanding');
-            $table->boolean('new');
-            $table->boolean('sold');
+            $table->decimal('price');
+            $table->string('sku');
+            $table->boolean('is_featured');
+            $table->boolean('is_new_from_stock');
+            $table->boolean('is_best_seller');
 
             $table->timestamps();
         });

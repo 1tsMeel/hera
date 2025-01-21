@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Classification;
+use App\Models\Feature;
+use App\Models\Product;
 use App\Models\Type;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,5 +29,7 @@ class DatabaseSeeder extends Seeder
         Classification::factory()->count(100)->create();
         Type::factory()->count(100)->create();
         Brand::factory()->count(10)->create();
+        Feature::factory()->count(10)->create();
+        Product::factory()->count(40)->create();
     }
 }
