@@ -20,7 +20,7 @@ return new class extends Migration
                 ->constrained();
             $table->string('name');
             $table->string('unit');
-            $table->string('image_path');
+            $table->text('image_path');
             $table->decimal('price');
             $table->string('sku');
             $table->boolean('is_featured');
