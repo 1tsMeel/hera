@@ -36,6 +36,12 @@ class ClassificationController extends Controller
 
         Classification::create($request->all());
 
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien!',
+            'text' => 'Clasificación creada correctamente.'
+        ]);
+
         return redirect()->route('admin.classifications.index');
     }
 
@@ -66,6 +72,12 @@ class ClassificationController extends Controller
 
         $classification->update($request->all());
 
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Bien!',
+            'text' => 'Clasificación actualizada correctamente.'
+        ]);
+
         return redirect()->route('admin.classifications.edit', $classification);
     }
 
@@ -74,6 +86,24 @@ class ClassificationController extends Controller
      */
     public function destroy(Classification $classification)
     {
-        //
+        if($classification->types->count() > 0){
+            session()->flash('swal', [
+                'icon' => 'error',
+                'title' => '¡Ups!',
+                'text' => 'No se puede eliminar la clasificación porque tiene tipos asociados.'
+            ]);
+
+            return redirect()->route('admin.classifications.edit', $classification);
+        }
+
+        $classification->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Eliminado!',
+            'text' => 'Clasificación eliminada correctamente.'
+        ]);
+
+        return redirect()->route('admin.classifications.index');
     }
 }
