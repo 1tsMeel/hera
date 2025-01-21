@@ -24,16 +24,12 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased" 
-    x-data="{
-        sidebarOpen: false
-    }"
-    :class="{
-        'overflow-y-hidden': sidebarOpen
-    }">
-    <div class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 sm:hidden"
-        style="display: none;"
-        x-show="sidebarOpen"
+<body class="font-sans antialiased" x-data="{
+    sidebarOpen: false
+}" :class="{
+    'overflow-y-hidden': sidebarOpen
+}">
+    <div class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 sm:hidden" style="display: none;" x-show="sidebarOpen"
         x-on:click="sidebarOpen = false"></div>
 
     @include('layouts.partials.admin.navigation')
@@ -57,7 +53,7 @@
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
 
                 {{ $slot }}
-                
+
             </div>
 
         </div>

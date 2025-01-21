@@ -4,8 +4,8 @@
         'route' => route('admin.dashboard'),
     ],
     [
-        'name' => 'Clasificaciones',
-        'route' => route('admin.classifications.index'),
+        'name' => 'Marcas',
+        'route' => route('admin.brands.index'),
     ],
     [
         'name' => 'Nueva',
@@ -14,8 +14,7 @@
 
     <div class="card">
         <x-validation-errors class="mb-4" />
-
-        <form action="{{ route('admin.classifications.store') }}" method="POST">
+        <form action="{{ route('admin.brands.store') }}" method="POST">
             @csrf
 
             <div class="mb-4">
@@ -23,7 +22,7 @@
                     Nombre
                 </x-label>
 
-                <x-input class="w-full mt-2" placeholder="Ingresa el nombre de la clasificación" name="name"
+                <x-input class="w-full mt-2" placeholder="Ingresa el nombre de la Marca" name="name"
                     value="{{ old('name') }}" />
             </div>
 

@@ -23,6 +23,14 @@
             'hasNumbers' => null,
             'active' => request()->routeIs('admin.types.*'),
         ],
+        [
+            // Tipos de marcas
+            'icon' => 'fa-solid fa-tags',
+            'name' => 'Marcas',
+            'route' => route('admin.brands.index'),
+            'hasNumbers' => null,
+            'active' => request()->routeIs('admin.brands.*'),
+        ],
     ];
 @endphp
 
