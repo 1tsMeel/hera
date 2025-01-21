@@ -15,7 +15,6 @@ class ClassificationController extends Controller
     {
         $classifications = Classification::orderBy('name')->paginate(10);
         return view('admin.classifications.index', compact('classifications'));
-        
     }
 
     /**
