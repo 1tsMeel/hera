@@ -15,6 +15,14 @@
             'hasNumbers' => null,
             'active' => request()->routeIs('admin.classifications.*'),
         ],
+        [
+            // Tipos de productos
+            'icon' => 'fa-solid fa-font-awesome',
+            'name' => 'Tipos',
+            'route' => route('admin.types.index'),
+            'hasNumbers' => null,
+            'active' => request()->routeIs('admin.types.*'),
+        ],
     ];
 @endphp
 

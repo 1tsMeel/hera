@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ClassificationController;
+use App\Http\Controllers\Admin\TypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
@@ -8,3 +9,4 @@ Route::get('/', function(){
 })->name('dashboard');
 
 Route::resource('classifications', ClassificationController::class);
+Route::resource('types', TypeController::class);
