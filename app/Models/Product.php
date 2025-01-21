@@ -16,10 +16,11 @@ class Product extends Model
         'name',
         'unit',
         'image_path',
-        'code',
-        'outstanding',
-        'new',
-        'sold'
+        'price',
+        'sku',
+        'is_featured',
+        'is_new_from_stock',
+        'is_best_seller'
     ];
 
     // Relación uno a muchos inversa
@@ -34,7 +35,7 @@ class Product extends Model
 
     // Relación muchos a muchos
     public function features(){
-        return $this->belongsToMany(Feature::class)
+        return $this->belongsToMany(Feature::class, 'product_feature')
                     ->withTimestamps();
     }
 }

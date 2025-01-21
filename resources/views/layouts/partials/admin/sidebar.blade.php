@@ -24,12 +24,28 @@
             'active' => request()->routeIs('admin.types.*'),
         ],
         [
-            // Tipos de marcas
+            // Marcas
             'icon' => 'fa-solid fa-tags',
             'name' => 'Marcas',
             'route' => route('admin.brands.index'),
             'hasNumbers' => null,
             'active' => request()->routeIs('admin.brands.*'),
+        ],
+        [
+            // Características
+            'icon' => 'fa-solid fa-paint-roller',
+            'name' => 'Características',
+            'route' => route('admin.features.index'),
+            'hasNumbers' => null,
+            'active' => request()->routeIs('admin.features.*'),
+        ],
+        [
+            // Productos
+            'icon' => 'fa-solid fa-unlock',
+            'name' => 'Productos',
+            'route' => route('admin.products.index'),
+            'hasNumbers' => null,
+            'active' => request()->routeIs('admin.products.*'),
         ],
     ];
 @endphp
