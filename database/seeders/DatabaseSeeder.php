@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
         Classification::factory()->count(100)->create();
         Type::factory()->count(100)->create();
         Brand::factory()->count(10)->create();
-        Feature::factory()->count(10)->create();
         Product::factory()->count(40)->create();
     }
 }
