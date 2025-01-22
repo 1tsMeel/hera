@@ -18,6 +18,7 @@ class Product extends Model
         'image_path',
         'price',
         'sku',
+        'description',
         'is_featured',
         'is_new_from_stock',
         'is_best_seller'
@@ -31,11 +32,5 @@ class Product extends Model
     // Relación uno a muchos inversa
     public function brand(){
         return $this->belongsTo(Brand::class);
-    }
-
-    // Relación muchos a muchos
-    public function features(){
-        return $this->belongsToMany(Feature::class, 'product_feature')
-                    ->withTimestamps();
     }
 }

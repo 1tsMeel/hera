@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('image_path');
             $table->decimal('price');
             $table->string('sku');
+            $table->text('description');
             $table->boolean('is_featured');
             $table->boolean('is_new_from_stock');
             $table->boolean('is_best_seller');

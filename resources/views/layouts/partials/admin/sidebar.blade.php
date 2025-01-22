@@ -32,14 +32,6 @@
             'active' => request()->routeIs('admin.brands.*'),
         ],
         [
-            // Características
-            'icon' => 'fa-solid fa-paint-roller',
-            'name' => 'Características',
-            'route' => route('admin.features.index'),
-            'hasNumbers' => null,
-            'active' => request()->routeIs('admin.features.*'),
-        ],
-        [
             // Productos
             'icon' => 'fa-solid fa-unlock',
             'name' => 'Productos',

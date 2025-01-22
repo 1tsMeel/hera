@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'image_path' => $this->faker->text(10),
             'price' => $this->faker->numberBetween(100,200),
             'sku' => $this->faker->unique()->text(10),
+            'description' => $this->faker->text(1000),
             'is_featured' => $this->faker->numberBetween(0,1),
             'is_new_from_stock' => $this->faker->numberBetween(0,1),
             'is_best_seller' => $this->faker->numberBetween(0,1),
