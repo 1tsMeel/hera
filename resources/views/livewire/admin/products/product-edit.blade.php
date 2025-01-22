@@ -8,7 +8,7 @@
             </x-label>
             <figure class="m-2">
                 <label class="relative">
-                    <img id="preview" src="{{ $image ? $image->temporaryUrl() : asset('img/no-image.png') }}" alt="" class="object-scale-down h-48">
+                    <img id="preview" src="{{ $image ? $image->temporaryUrl() : Storage::url($productEdit['image_path']) }}" alt="" class="object-scale-down h-48">
                     <x-input type="file" class="w-full mb-4 hidden" 
                         wire:model.live="image"
                         accept="image/*"
@@ -26,12 +26,12 @@
                 Marca
             </x-label>
 
-            <x-select class="w-full mt-2" wire:model.live="product.brand_id">
+            <x-select class="w-full mt-2" wire:model.live="brand_id">
 
                 <option value="" disabled selected>Selecciona la marca</option>
 
                 @foreach ($brands as $brand)
-                    <option value="{{ $brand->id }}" @selected(old('brand_id') == $brand->id)>
+                    <option value="{{ $brand->id }}">
                         {{ $brand->name }}
                     </option>
                 @endforeach
@@ -45,12 +45,12 @@
                     Clasificación
                 </x-label>
     
-                <x-select class="w-full mt-2" wire:model.live="product.classification_id">
+                <x-select class="w-full mt-2" wire:model.live="classification_id">
     
                     <option value="" disabled selected>Selecciona la clasificación</option>
     
                     @foreach ($classifications as $classification)
-                        <option value="{{ $classification->id }}" @selected(old('classification_id') == $classification->id)>
+                        <option value="{{ $classification->id }}">
                             {{ $classification->name }}
                         </option>
                     @endforeach
@@ -63,12 +63,12 @@
                     Tipos
                 </x-label>
     
-                <x-select class="w-full mt-2" wire:model.live="product.type_id">
+                <x-select class="w-full mt-2" wire:model.live="type_id">
     
                     <option value="" disabled selected>Selecciona el tipo</option>
     
                     @foreach ($this->types as $type)
-                        <option value="{{ $type->id }}" @selected(old('type_id') == $type->id)>
+                        <option value="{{ $type->id }}">
                             {{ $type->name }}
                         </option>
                     @endforeach
@@ -84,7 +84,7 @@
                 </x-label>
 
                 <x-input class="w-full mt-2"
-                        wire:model.live="product.name"
+                        wire:model.live="productEdit.name"
                         placeholder="Ingrese el nombre del producto" />
             </div>
 
@@ -94,7 +94,7 @@
                 </x-label>
 
                 <x-input class="w-full mt-2"
-                        wire:model.live="product.sku"
+                        wire:model.live="productEdit.sku"
                         placeholder="Ingrese el SKU del producto" />
             </div>
         </div>
@@ -106,7 +106,7 @@
                 </x-label>
 
                 <x-input class="w-full mt-2"
-                        wire:model.live="product.price"
+                        wire:model.live="productEdit.price"
                         placeholder="Ingrese el precio del producto" />
             </div>
 
@@ -116,26 +116,26 @@
                 </x-label>
 
                 <x-input class="w-full mt-2"
-                        wire:model.live="product.unit"
+                        wire:model.live="productEdit.unit"
                         placeholder="Ingrese la unidad del producto" />
             </div>
         </div>
 
         <div class="mb-4 grid grid-cols-3 justify-items-center">
             <div class="flex gap-2 items-center">
-                <input type="checkbox" wire:model.live="product.is_featured" />
+                <input type="checkbox" wire:model.live="productEdit.is_featured" @checked($this->productEdit['is_featured']) />
                 <x-label>
                     Es destacado
                 </x-label>
             </div>
             <div class="flex gap-2 items-center">
-                <input type="checkbox" wire:model.live="product.is_new_from_stock" />
+                <input type="checkbox" wire:model.live="productEdit.is_new_from_stock" @checked($this->productEdit['is_new_from_stock']) />
                 <x-label>
                     Es nuevo de stock
                 </x-label>
             </div>
             <div class="flex gap-2 items-center">
-                <input type="checkbox" wire:model.live="product.is_best_seller" />
+                <input type="checkbox" wire:model.live="productEdit.is_best_seller" @checked($this->productEdit['is_best_seller']) />
                 <x-label>
                     Es más vendido
                 </x-label>
@@ -149,16 +149,51 @@
             
             <x-textarea class="w-full mt-2"
                         rows="4"
-                        wire:model.live="product.description"
+                        wire:model.live="productEdit.description"
                         placeholder="Ingrese la descripción del producto" />
         </div>
 
         <div class="flex justify-end">
-            <x-button>
-                Guardar
+            <x-danger-button onclick="confirmDelete()">
+                Eliminar
+            </x-danger-button>
+
+            <x-button class="ml-2">
+                Actualizar
             </x-button>
         </div>
     </form>
 
-    {{-- @dump($product) --}}
+    <form action="{{ route('admin.products.destroy', $product) }}" method="POST" id="delete-form">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    @push('js')
+        <script>
+            function confirmDelete() {
+                Swal.fire({
+                    title: "¿Estás seguro/a?",
+                    text: "No se podrán deshacer los cambios.",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Sí, elimínalo",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        /* Swal.fire({
+                            title: "¡Eliminado!",
+                            text: "Ha sido eliminado correctamente",
+                            icon: "success"
+                        }); */
+                        document.getElementById('delete-form').submit();
+                    }
+                });
+            }
+        </script>
+    @endpush
+
+    {{-- @dump($productEdit) --}}
 </div>

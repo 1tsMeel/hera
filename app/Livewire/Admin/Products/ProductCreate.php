@@ -13,6 +13,9 @@ use Livewire\WithFileUploads;
 class ProductCreate extends Component
 {
     use WithFileUploads;
+
+    public $confirmButtonColor = "purple";
+    
     public $classifications, $brands;
 
     public $image;
@@ -26,6 +29,7 @@ class ProductCreate extends Component
         'image_path' => '',
         'price' => '',
         'sku' => '',
+        'description' => '',
         'is_featured' => '',
         'is_new_from_stock' => '',
         'is_best_seller' => ''
@@ -47,7 +51,8 @@ class ProductCreate extends Component
                 $this->dispatch('swal', [
                     'icon' => 'error',
                     'title' => '¡Error!',
-                    'text' => 'El formulario contiene errores.'
+                    'text' => 'El formulario contiene errores.',
+                    'confirmButtonColor' => $this->confirmButtonColor,
                 ]);
             }
         });
@@ -71,10 +76,11 @@ class ProductCreate extends Component
             'product.type_id' => 'required|exists:types,id',
             'product.brand_id' => 'required|exists:brands,id',
             'product.name' => 'required|max:50',
-            'product.unit' => 'required|max:20',
-            'image' => 'image|max:5120',
             'product.price' => 'required|numeric|min:0',
+            'product.unit' => 'required|max:20',
+            'image' => 'required|image|max:5120',
             'product.sku' => 'required|max:255|unique:products,sku',
+            'product.description' => 'required',
             'product.is_featured' => 'required',
             'product.is_new_from_stock' => 'required',
             'product.is_best_seller' => 'required'
@@ -83,10 +89,11 @@ class ProductCreate extends Component
             'product.type_id' => 'tipo',
             'product.brand_id' => 'marca',
             'product.name' => 'nombre',
-            'product.unit' => 'unidad',
-            'product.image_path' => 'imagen',
             'product.price' => 'precio',
+            'product.unit' => 'unidad',
+            'image' => 'imagen',
             'product.sku' => 'código/sku',
+            'product.description' => 'descripción',
             'product.is_featured' => 'destacado',
             'product.is_new_from_stock' => 'nuevo',
             'product.is_best_seller' => 'más vendido'
@@ -99,7 +106,8 @@ class ProductCreate extends Component
         session()->flash('swal', [
             'icon' => 'success',
             'title' => '¡Bien!',
-            'text' => 'Producto creado correctamente.'
+            'text' => 'Producto creado correctamente.',
+            'confirmButtonColor' => $this->confirmButtonColor,
         ]);
 
         return redirect()->route('admin.products.index');
