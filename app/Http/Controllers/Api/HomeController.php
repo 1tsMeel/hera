@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home(){
-        $products = Product::where('brand_id', 4)->get(); // Brand_id = 4 es la marca llamada "Corporis."
+    public function home()
+    {
+        $products = Product::where('brand_id', 11)->get(); // Brand_id = 4 es la marca llamada "Corporis."
         return view('app.index', compact('products'));
     }
 }
