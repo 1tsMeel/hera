@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('app.index');
-});
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::middleware([
     'auth:sanctum',

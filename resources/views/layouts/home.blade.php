@@ -26,8 +26,6 @@
     @include('layouts.partials.app.navigation')
     @include('layouts.partials.app.header')
 
-
-
     {{ $slot }}
     @include('layouts.partials.app.locations')
     @include('layouts.partials.app.footer')
