@@ -1,135 +1,21 @@
 <x-home-layout>
-    <!-- Container for demo purpose -->
-    <div class="container my-24 mx-auto md:px-6">
-        <!-- Section: Design Block -->
-        <section class="mb-32">
-            <div
-                class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-                <div class="flex flex-wrap items-center">
-                    <div class="block w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/ecommerce/vertical/012.jpg"
-                            alt="Trendy Pants and Shoes"
-                            class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
-                    </div>
-                    <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
-                        <div class="px-6 py-12 md:px-12">
-                            <h2 class="mb-6 pb-2 text-4xl font-bold">
-                                Why is it so great?
-                            </h2>
-                            <p class="mb-6 pb-2 text-neutral-500 dark:text-neutral-300">
-                                Nunc tincidunt vulputate elit. Mauris varius purus malesuada
-                                neque iaculis malesuada. Aenean gravida magna orci, non
-                                efficitur est porta id. Donec magna diam.
-                            </p>
 
-                            <div class="grid gap-x-6 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Support
-                                        24/7
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Analytics
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Components
-                                    </p>
-                                </div>
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Updates
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Reports
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Mobile
-                                    </p>
-                                </div>
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Modules
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Blocks
-                                    </p>
-                                </div>
-
-                                <div class="mb-6">
-                                    <p class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor"
-                                            class="mr-3 h-6 w-6 text-neutral-900 dark:text-neutral-100">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M4.5 12.75l6 6 9-13.5" />
-                                        </svg>Templates
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section class="px-3 py-5 bg-neutral-100 lg:py-10">
+        <div class="grid lg:grid-cols-2 items-center justify-items-center gap-5">
+            <div class="order-2 lg:order-1 flex flex-col justify-center items-center">
+                <p class="text-4xl font-bold md:text-7xl text-orange-600">25% OFF</p>
+                <p class="text-4xl font-bold md:text-7xl">SUMMER SALE</p>
+                <p class="mt-2 text-sm md:text-lg">For limited time only!</p>
+                <button class="text-lg md:text-2xl bg-black text-white py-2 px-5 mt-10 hover:bg-zinc-800">Shop
+                    Now</button>
             </div>
-        </section>
-        <!-- Section: Design Block -->
-    </div>
-    <!-- Container for demo purpose -->
-
+            <div class="order-1 lg:order-2">
+                <img class="h-80 w-80 object-cover lg:w-[500px] lg:h-[500px]"
+                    src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
+                    alt="">
+            </div>
+        </div>
+    </section>
 
     <!-- source: https://github.com/mfg888/Responsive-Tailwind-CSS-Grid/blob/main/index.html -->
 
@@ -156,18 +42,18 @@
 
         @foreach ($products as $product)
             <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                <a href="#">
+                <a href="{{ route('products.show', $product) }}">
                     <img src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                         alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
                     <div class="px-4 py-3 w-72">
                         @if ($product->is_featured)
-                            <i class="fa-solid fa-star"></i>     
+                            <i class="fa-solid fa-star"></i>
                         @endif
                         @if ($product->is_best_seller)
-                            <i class="fa-solid fa-medal"></i>     
+                            <i class="fa-solid fa-medal"></i>
                         @endif
                         @if ($product->is_new_from_stock)
-                            <i class="fa-solid fa-box"></i>     
+                            <i class="fa-solid fa-box"></i>
                         @endif
                         <br>
                         <span class="text-gray-400 mr-3 uppercase text-xs">{{ $product->brand->name }}</span>
@@ -175,9 +61,9 @@
                         <p class="text-lg font-bold text-black truncate block capitalize">{{ $product->name }}</p>
                         <div class="flex items-center">
                             <p class="text-lg font-semibold text-black cursor-auto my-3">$ {{ $product->price }}</p>
-                            
-                            <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                    height="20" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
+
+                            <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"
                                         d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
                                     <path
@@ -350,11 +236,7 @@
     <!-- 🛑 Grid Section - Ends Here -->
 
 
-    <!-- credit -->
-    <div class="text-center py-10 px-10">
-        <h2 class="font-bold text-2xl md:text-4xl mb-4">Thanks to <a href="https://unsplash.com/@nixcreative"
-                class="underline font-black">Tyler Nix</a> for those AMAZING product images!</h2>
-    </div>
+
 
 
 
