@@ -1,40 +1,174 @@
 <x-home-layout>
-    @include('layouts.partials.app.sidebar')
-    <section id="Projects"
-        class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-        @foreach ($products as $product)
-            <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                <a href="{{ route('products.show', $product) }}">
-                    <img src="https://images.unsplash.com/photo-1646753522408-077ef9839300?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NjZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                        alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
-                    <div class="px-4 py-3 w-72">
-                        @if ($product->is_featured)
-                            <i class="fa-solid fa-star"></i>
-                        @endif
-                        @if ($product->is_best_seller)
-                            <i class="fa-solid fa-medal"></i>
-                        @endif
-                        @if ($product->is_new_from_stock)
-                            <i class="fa-solid fa-box"></i>
-                        @endif
-                        <br>
-                        <span class="text-gray-400 mr-3 uppercase text-xs">{{ $product->brand->name }}</span>
-                        <p class="text-sm font-bold text-black truncate block capitalize">{{ $product->type->name }}</p>
-                        <p class="text-lg font-bold text-black truncate block capitalize">{{ $product->name }}</p>
-                        <div class="flex items-center">
-                            <p class="text-lg font-semibold text-black cursor-auto my-3">$ {{ $product->price }}</p>
+    <div class="container mx-auto px-4 py-8 flex flex-col min-h-screen">
+        <div class="flex flex-col lg:flex-row gap-8 flex-grow">
+            <!-- Sidebar Filters -->
+            <div class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold">Filtros</h2>
+                    <button class="text-blue-600 text-sm hover:text-blue-800">Limpiar todos</button>
+                </div>
 
-                            <div class="ml-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
-                                    <path
-                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                                </svg></div>
+                <!-- Categories -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-4">Categories</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Jaladeras</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Chapas</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Bisagras</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Nose</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-4">Rango de Precio</h3>
+                    <div class="space-y-4">
+                        <input type="range" min="0" max="1000"
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="flex gap-4">
+                            <input type="number" placeholder="Min" class="w-full px-3 py-2 border rounded-md">
+                            <input type="number" placeholder="Max" class="w-full px-3 py-2 border rounded-md">
                         </div>
                     </div>
-                </a>
+                </div>
+
+                <!-- Brands -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-4">Marcas</h3>
+                    <input type="text" placeholder="Buscar Marcas" class="w-full px-3 py-2 border rounded-md mb-3">
+                    <div class="space-y-2 max-h-40 overflow-y-auto">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Handy Home</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Herrasa</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Yale</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Discounts -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-4">Descuentos</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">10% de descuento</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">20% de descuento</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">50% de descuento</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
+                            <span class="ml-2">Liquidacion</span>
+                        </label>
+                    </div>
+                </div>
             </div>
-        @endforeach
-    </section>
+
+            <!-- Product Grid -->
+            <div class="lg:w-3/4 flex flex-col flex-grow">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-4">
+                        <button class="p-2 bg-white rounded-md border hover:bg-gray-50">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                        <button class="p-2 bg-white rounded-md border hover:bg-gray-50">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <select class="px-4 py-2 border rounded-md bg-white">
+                        <option>Sort by: Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                    </select>
+                </div>
+
+                <!-- Product Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-grow">
+                    @foreach ($products as $product)
+                        <a href="{{ route('products.show', $product) }}">
+                            <div
+                                class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Product"
+                                    class="w-full h-48 object-cover">
+                                <div class="p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center gap-2">
+                                            @if ($product->is_featured)
+                                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                            @endif
+                                            @if ($product->is_best_seller)
+                                                <i class="fa-solid fa-medal text-blue-500"></i>
+                                            @endif
+                                            @if ($product->is_new_from_stock)
+                                                <i class="fa-solid fa-box text-green-500"></i>
+                                            @endif
+                                        </div>
+                                        <div class="flex text-yellow-400">
+                                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                                                </path>
+                                            </svg>
+                                            <span class="text-gray-600 text-sm ml-1">4.5</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="font-medium text-gray-900 mb-2">{{ $product->name }}</h3>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-lg font-bold text-gray-900">${{ $product->price }}</span>
+                                        </div>
+                                        <button
+                                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Añadir
+                                            a la Cotización</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center mt-8">
+                    <nav class="flex items-center gap-2">
+                        <button class="px-3 py-2 rounded-md bg-white border hover:bg-gray-50">Previous</button>
+                        <button class="px-3 py-2 rounded-md bg-blue-600 text-white">1</button>
+                        <button class="px-3 py-2 rounded-md bg-white border hover:bg-gray-50">2</button>
+                        <button class="px-3 py-2 rounded-md bg-white border hover:bg-gray-50">3</button>
+                        <button class="px-3 py-2 rounded-md bg-white border hover:bg-gray-50">Next</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-home-layout>
