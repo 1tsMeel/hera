@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $products = Product::where('brand_id', 11)->get(); // Brand_id = 4 es la marca llamada "Corporis."
+        $products = Product::where('brand_id', 10)->get();
         return view('app.index', compact('products'));
     }
 }
