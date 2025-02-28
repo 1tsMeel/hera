@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Classification;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        return view('app.products.index', compact('products'));
+        $products = Product::with(['brand', 'type'])->get();
+        $classifications = Classification::orderBy('name', 'asc')->get();
+        return view('app.products.index', compact('products', 'classifications'));
     }
 
     /**

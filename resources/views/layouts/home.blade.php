@@ -31,6 +31,7 @@
     @include('layouts.partials.app.footer')
 
     @livewireScripts
+    @stack('js')
 </body>
 
 </html>
