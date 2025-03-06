@@ -1,24 +1,33 @@
 <x-home-layout>
-    <div x-data="sidebar()" class="container mx-auto px-4 py-8 flex flex-col min-h-screen">
-        <div class="flex flex-col lg:flex-row gap-8 flex-grow">
+    <div x-data="sidebar()" class="container mx-auto px-4 py-8 flex flex-col">
+        <div class="flex flex-col lg:flex-row gap-8 flex-grow relative">
             <!-- Sidebar Filters -->
-            <div class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
+            <div>
+                <button @click="sidebarOpen = !sidebarOpen"
+                    class="btn btn-teal text-xs justify-center items-center -top-0 -left-0 z-10"
+                    :class="sidebarOpen ? 'absolute' : 'static'">
+                    <i :class="sidebarOpen ? 'fa-solid fa-chevron-left' : 'fa-solid fa-bars'"></i>
+                </button>
+            </div>
+            <div x-show="sidebarOpen" x-collapse.duration.0ms x-transition
+                class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-xl font-semibold">Filtros</h2>
-                    <button class="text-blue-600 text-sm hover:text-blue-800">Limpiar todos</button>
+                    <button class="text-blue-600 text-sm hover:text-blue-800" @click="cleanFilters()">Limpiar
+                        todos</button>
                 </div>
 
                 <!-- Categories -->
                 <div class="mb-6">
                     <h3 class="font-medium mb-4">Categories</h3>
-                    <div class="space-y-2">
+                    <div class="space-y-2 grid grid-cols-3 text-xs">
                         <template x-for="classification in classifications" :key="classification.id">
                             <label class="flex items-center cursor-pointer">
                                 <input x-on:change="toggleClassification(classification.id)" type="checkbox"
-                                    class="form-checkbox h-4 w-4 text-blue-600">
+                                    class="form-checkbox h-4 w-4 text-blue-600"
+                                    :id="`classification_${classification.id}`">
                                 <span x-text="classification.name" class="ml-2"></span>
                             </label>
-
                         </template>
                     </div>
                 </div>
@@ -27,37 +36,34 @@
                 <div class="mb-6">
                     <h3 class="font-medium mb-4">Rango de Precio</h3>
                     <div class="space-y-4">
-                        <input type="range" min="0" max="1000"
+                        <input type="range" min="0" max="1000" x-model="priceRangeBar"
                             class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                        <div class="flex gap-4">
+                        $ 0 - $ <span x-text="priceRangeBar"></span>
+                        {{-- <div class="flex gap-4">
                             <input type="number" placeholder="Min" class="w-full px-3 py-2 border rounded-md">
                             <input type="number" placeholder="Max" class="w-full px-3 py-2 border rounded-md">
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
                 <!-- Brands -->
                 <div class="mb-6">
                     <h3 class="font-medium mb-4">Marcas</h3>
-                    <input type="text" placeholder="Buscar Marcas" class="w-full px-3 py-2 border rounded-md mb-3">
+                    <input type="text" x-model="brandSearch" placeholder="Buscar Marcas"
+                        class="w-full px-3 py-2 border rounded-md mb-3">
                     <div class="space-y-2 max-h-40 overflow-y-auto">
-                        <label class="flex items-center cursor-pointer">
-                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
-                            <span class="ml-2">Handy Home</span>
-                        </label>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
-                            <span class="ml-2">Herrasa</span>
-                        </label>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="checkbox" class="form-checkbox h-4 w-4 text-blue-600">
-                            <span class="ml-2">Yale</span>
-                        </label>
+                        <template x-for="brand in filteredBrands" :key="brand.id">
+                            <label class="flex items-center cursor-pointer">
+                                <input x-on:change="toggleBrand(brand.id)" type="checkbox"
+                                    class="form-checkbox h-4 w-4 ml-1 text-blue-600" :id="`brand_${brand.id}`">
+                                <span x-text="brand.name" class="ml-2"></span>
+                            </label>
+                        </template>
                     </div>
                 </div>
 
                 <!-- Discounts -->
-                <div class="mb-6">
+                {{-- <div class="mb-6"> <!-- No se si se iba a usar entonces lo comento --> 
                     <h3 class="font-medium mb-4">Descuentos</h3>
                     <div class="space-y-2">
                         <label class="flex items-center cursor-pointer">
@@ -77,13 +83,13 @@
                             <span class="ml-2">Liquidacion</span>
                         </label>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Product Grid -->
-            <div class="lg:w-3/4 flex flex-col flex-grow">
+            <div class="lg:w-3/4 flex flex-col flex-grow max-h-[200vh] overflow-y-auto">
                 <div class="flex justify-between items-center mb-6">
-                    <div class="flex items-center gap-4">
+                    {{-- <div class="flex items-center gap-4">
                         <button class="p-2 bg-white rounded-md border hover:bg-gray-50">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -96,12 +102,14 @@
                                     d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
                             </svg>
                         </button>
-                    </div>
-                    <select class="px-4 py-2 border rounded-md bg-white">
-                        <option>Sort by: Featured</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest First</option>
+                    </div> --}}
+                    <select class="px-4 py-2 border rounded-md bg-white w-2/8" x-model="sortOption"
+                        @change="sortProducts">
+                        <option value="0" selected disabled>Ordenar por:</option>
+                        <option value="name">Nombre</option>
+                        <option value="priceLtH">Precio: Bajo a Alto</option>
+                        <option value="priceHtL">Precio: Alto a Bajo</option>
+                        <option value="newest">Los más nuevos primero</option>
                     </select>
                 </div>
 
@@ -140,7 +148,7 @@
                                     <div class="flex items-center justify-between">
                                         <span class="text-lg font-bold text-gray-900"
                                             x-text="'$' + product.price"></span>
-                                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                                        <button class="bg-blue-600 text-white px-2 py-2 rounded-md hover:bg-blue-700">
                                             Añadir a la Cotización
                                         </button>
                                     </div>
@@ -151,7 +159,7 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="flex justify-center mt-8">
+                <div class="justify-center mt-8 hidden">
                     <nav class="flex items-center gap-2">
                         <button class="px-3 py-2 rounded-md bg-white border hover:bg-gray-50">Previous</button>
                         <button class="px-3 py-2 rounded-md bg-blue-600 text-white">1</button>
@@ -167,6 +175,7 @@
         <script>
             function sidebar() {
                 return {
+                    sidebarOpen: true,
                     products: @json($products).map(product => ({
                         id: product.id,
                         name: product.name,
@@ -183,15 +192,60 @@
                         classification_id: product.type.classification_id,
                     })),
                     classifications: @json($classifications),
+                    brands: @json($brands),
+                    brandSearch: '',
                     selectedClassifications: [],
+                    selectedBrands: [],
+                    sortOption: "0",
+
                     get filteredProducts() {
-                        if (this.selectedClassifications.length === 0) {
-                            return this.products;
-                        }
-                        return this.products.filter(product =>
-                            this.selectedClassifications.includes(product.type.classification_id)
-                        );
+                        return this.products.filter(product => {
+                            const withinPrice = product.price <= this.priceRangeBar + 1;
+                            const inSelectedClassifications = this.selectedClassifications.length === 0 ||
+                                this.selectedClassifications.includes(product.type?.classification_id ?? null);
+                            const inSelectedBrands = this.selectedBrands.length === 0 ||
+                                this.selectedBrands.includes(product.brand.id ?? null);
+
+                            return withinPrice && inSelectedClassifications && inSelectedBrands;
+                        });
                     },
+
+                    sortByName() {
+                        this.products.sort((a, b) => a.name.localeCompare(b.name));
+                    },
+
+                    sortByPriceLtH() {
+                        this.products.sort((a, b) => a.price - b.price);
+                    },
+
+                    sortByPriceHtL() {
+                        this.products.sort((a, b) => b.price - a.price);
+                    },
+
+                    sortByNewest() {
+                        this.products.sort((a, b) => b.is_new_from_stock - a.is_new_from_stock);
+                    },
+
+                    sortProducts() {
+                        if (this.sortOption === 'name') {
+                            this.sortByName();
+                        } else if (this.sortOption === 'priceLtH') {
+                            this.sortByPriceLtH();
+                        } else if (this.sortOption === 'priceHtL') {
+                            this.sortByPriceHtL();
+                        } else if (this.sortOption === 'newest') {
+                            this.sortByNewest();
+                        }
+                    },
+
+                    get filteredBrands() {
+                        return this.brands.filter(b => {
+                            return (`${b.name}`)
+                                .toLowerCase()
+                                .includes(this.brandSearch.toLowerCase());
+                        });
+                    },
+
                     toggleClassification(id) {
                         if (this.selectedClassifications.includes(id)) {
                             this.selectedClassifications = this.selectedClassifications.filter(c => c !== id);
@@ -203,11 +257,36 @@
                         })
                         console.log(this.filteredProducts)
                     },
-                    obtainProduct(id) {
-                        return this.products.find(p => p.id == id);
+
+                    toggleBrand(id) {
+                        if (this.selectedBrands.includes(id)) {
+                            this.selectedBrands = this.selectedBrands.filter(b => b !== id);
+                        } else {
+                            this.selectedBrands.push(id);
+                        }
                     },
-                    obtainClassification(id) {
-                        return this.classifications.find(c => c.id == id);
+
+                    priceRangeBar: 200,
+
+                    cleanFilters() {
+                        this.cleanCategories();
+                        this.cleanBrands();
+                        this.priceRangeBar = 200;
+                    },
+
+                    cleanCategories() {
+                        console.log("Clearing Categories")
+                        this.selectedClassifications.forEach(c => {
+                            document.getElementById("classification_" + c).checked = false;
+                        });
+                        this.selectedClassifications = [];
+                    },
+
+                    cleanBrands() {
+                        this.selectedBrands.forEach(b => {
+                            document.getElementById("brand_" + b).checked = false;
+                        });
+                        this.selectedBrands = [];
                     },
                 };
             }
