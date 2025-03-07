@@ -17,3 +17,7 @@
 .btn-gray{
     @apply bg-gray-500 dark:bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-300 dark:focus:ring-gray-800;
 }
+
+.btn-teal{
+    @apply bg-teal-500 dark:bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-300 dark:focus:ring-teal-800;
+}
