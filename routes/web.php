@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::resource('products', ProductController::class);
+Route::get('/import/products', [ProductController::class, 'importGet'])->name('product.importGet');
+Route::post('/import/products', [ProductController::class, 'importPost'])->name('product.importPost');
 Route::resource('cotizacion', CotizacionController::class);
 
 //Route::get('/', [CartController::class, 'shop'])->name('shop');
