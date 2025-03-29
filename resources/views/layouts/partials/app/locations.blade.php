@@ -1,50 +1,58 @@
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-20">
-            <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">CONOCE NUESTRAS DIFERENTES
-                UBICACIONES</h2>
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Sucursales
-            </h1>
+<section class="bg-base-200 text-base-content py-16">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-primary text-sm font-semibold uppercase tracking-wide">Conoce nuestras ubicaciones</h2>
+            <h1 class="text-3xl font-bold">Sucursales</h1>
         </div>
-        <div class="flex flex-wrap">
-            <div class="xl:w-1/3 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-                <span class="inline-flex w-6 h-12 justify-center items-center">
-                    <i class="fa-solid fa-location-dot text-4xl"></i>
-                </span>
-                <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Salvador Nava Martínez</h2>
-                <p class="leading-relaxed text-base mb-4">Dirección: Av. Salvador Nava Martínez 1115, Constituyentes,
-                    78388 San Luis Potosí, S.L.P.</p>
-                <a class="text-indigo-500 inline-flex items-center">Ver Mapa
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Ubicación 1 -->
+            <div class="p-6 bg-base-100 shadow-md rounded-lg border border-base-300">
+                <div class="flex items-center mb-4">
+                    <div class="text-primary text-4xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h2 class="ml-3 text-xl font-semibold">Salvador Nava Martínez</h2>
+                </div>
+                <p class="text-gray-500 mb-4">Av. Salvador Nava Martínez 1115, Constituyentes, 78388 San Luis Potosí,
+                    S.L.P.</p>
+                <a href="#" class="text-primary flex items-center gap-2">
+                    Ver Mapa
+                    <svg fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                 </a>
             </div>
-            <div class="xl:w-1/3 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-                <span class="inline-flex w-6 h-12 justify-center items-center">
-                    <i class="fa-solid fa-location-dot text-4xl"></i>
-                </span>
-                <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Vasco de Quiroga</h2>
-                <p class="leading-relaxed text-base mb-4">Dirección: Av. Vasco de Quiroga 825-C, Avenida, 78140 San Luis
-                    Potosí, S.L.P.</p>
-                <a class="text-indigo-500 inline-flex items-center">Ver Mapa
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+
+            <!-- Ubicación 2 -->
+            <div class="p-6 bg-base-100 shadow-md rounded-lg border border-base-300">
+                <div class="flex items-center mb-4">
+                    <div class="text-primary text-4xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h2 class="ml-3 text-xl font-semibold">Vasco de Quiroga</h2>
+                </div>
+                <p class="text-gray-500 mb-4">Av. Vasco de Quiroga 825-C, Avenida, 78140 San Luis Potosí, S.L.P.</p>
+                <a href="#" class="text-primary flex items-center gap-2">
+                    Ver Mapa
+                    <svg fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                 </a>
             </div>
-            <div class="xl:w-1/3 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-                <span class="inline-flex w-6 h-12 justify-center items-center">
-                    <i class="fa-solid fa-location-dot text-4xl"></i>
-                </span>
-                <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Paseo de los Insurgentes</h2>
-                <p class="leading-relaxed text-base mb-4">Dirección: P.º de los Insurgentes 1201-3, Lomas de la
-                    Trinidad, 37300 León de los Aldama, Gto.</p>
-                <a class="text-indigo-500 inline-flex items-center">Ver Mapa
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+
+            <!-- Ubicación 3 -->
+            <div class="p-6 bg-base-100 shadow-md rounded-lg border border-base-300">
+                <div class="flex items-center mb-4">
+                    <div class="text-primary text-4xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h2 class="ml-3 text-xl font-semibold">Paseo de los Insurgentes</h2>
+                </div>
+                <p class="text-gray-500 mb-4">P.º de los Insurgentes 1201-3, Lomas de la Trinidad, 37300 León de los
+                    Aldama, Gto.</p>
+                <a href="#" class="text-primary flex items-center gap-2">
+                    Ver Mapa
+                    <svg fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                 </a>
