@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Cotizacion;
 use Illuminate\Http\Request;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 class CotizacionController extends Controller
 {
@@ -13,7 +14,8 @@ class CotizacionController extends Controller
      */
     public function index()
     {
-        return view('app.cotizacion.index');
+        $cartCollection = Cart::getContent();
+        return view('app.cotizacion.index', compact('cartCollection'));
     }
 
     /**
