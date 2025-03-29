@@ -18,11 +18,21 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans]
             },
             colors: {
-                'primary': '#44355B',
-                'secondary': '#31263E',
-                'tertiary': '#221E22',
-                'enf-1': 'ECA72C',
-                'enf-2': 'EE5622'
+                'primary': '#00a1e0',
+                'secondary': '#6da0e1',
+                'tertiary': '#5b62b3',
+                'enf-1': '#dec2db',
+                'enf-2': '#ede2e0',
+                'under': '#fff5fc'
+            },
+            animation: {
+                'infinite-scroll': 'infinite-scroll 25s linear infinite',
+            },
+            keyframes: {
+                'infinite-scroll': {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-100%)' },
+                }
             }
         },
     },
