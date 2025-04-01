@@ -39,7 +39,7 @@
     {{ $slot }}
     @include('layouts.partials.app.locations')
     @include('layouts.partials.app.footer')
-
+    @include('layouts.partials.app.whats')
     @livewireScripts
     @stack('js')
 </body>
