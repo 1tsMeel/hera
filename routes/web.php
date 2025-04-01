@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CotizacionController;
 use App\Http\Controllers\Api\HomeController;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::resource('products', ProductController::class);
+Route::resource('brands', BrandController::class);
 Route::resource('cotizacion', CotizacionController::class);
 
 //Route::get('/', [CartController::class, 'shop'])->name('shop');
