@@ -77,7 +77,7 @@
                     href="{{ route('brands.index') }}">Marcas</a></li>
             <li class="lg:mr-12"><a
                     class="rounded text-gray-200 transition focus:outline-none focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('contacts.*') ? 'underline' : '' }}" 
-                    href="#">Contactos</a></li>
+                    href="{{ route('contacts.index') }}">Contactos</a></li>
             <li class="lg:mr-12"><a
                     class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('cotizacion.*') ? 'underline' : '' }}" 
                     href="{{ route('cotizacion.index') }}">Cotización</a></li>
