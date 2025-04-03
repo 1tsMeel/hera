@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cotizacion;
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use Darryldecode\Cart\Facades\CartFacade as Cart;
 
-class CotizacionController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cartCollection = Cart::getContent();
-        return view('app.cotizacion.index', compact('cartCollection'));
+        $brands = Brand::orderBy('name', 'asc')
+            ->get();
+        return view('app.brands.index', compact([
+            'brands',
+        ]));
     }
 
     /**
@@ -37,7 +39,7 @@ class CotizacionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cotizacion $cotizacion)
+    public function show(Brand $brand)
     {
         //
     }
@@ -45,7 +47,7 @@ class CotizacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cotizacion $cotizacion)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -53,7 +55,7 @@ class CotizacionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cotizacion $cotizacion)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -61,7 +63,7 @@ class CotizacionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cotizacion $cotizacion)
+    public function destroy(Brand $brand)
     {
         //
     }
