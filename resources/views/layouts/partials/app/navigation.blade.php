@@ -70,23 +70,32 @@
         class="peer-checked:pt-8 peer-checked:max-h-60 flex max-h-0 w-full flex-col items-center overflow-hidden transition-all lg:ml-24 lg:max-h-full lg:flex-row">
         <ul class="flex w-full flex-col items-center space-y-2 lg:flex-row lg:justify-center lg:space-y-0">
             <li class="lg:mr-12"><a
-                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2"
+                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('products.*') ? 'underline' : '' }}" 
                     href="{{ route('products.index') }}">Productos</a></li>
             <li class="lg:mr-12"><a
-                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2"
-                    href="#">Marcas</a></li>
+                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('brands.*') ? 'underline' : '' }}" 
+                    href="{{ route('brands.index') }}">Marcas</a></li>
             <li class="lg:mr-12"><a
-                    class="rounded text-gray-200 transition focus:outline-none focus:ring-blue-700 focus:ring-offset-2"
-                    href="#">Contactos</a></li>
+                    class="rounded text-gray-200 transition focus:outline-none focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('contacts.*') ? 'underline' : '' }}" 
+                    href="{{ route('contacts.index') }}">Contactos</a></li>
             <li class="lg:mr-12"><a
-                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2"
+                    class="rounded text-gray-200 transition focus:outline-none  focus:ring-blue-700 focus:ring-offset-2 {{ request()->routeIs('cotizacion.*') ? 'underline' : '' }}" 
                     href="{{ route('cotizacion.index') }}">Cotización</a></li>
         </ul>
         <hr class="mt-4 w-full lg:hidden" />
         <div class="my-4 flex items-center space-x-6 space-y-2 lg:my-0 lg:ml-auto lg:space-x-8 lg:space-y-0">
-            <a href="#" title=""
-                class="whitespace-nowrap rounded font-medium transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-2 hover:text-opacity-50">
-                Iniciar sesión </a>
+            @if (Route::has('login'))
+                @auth
+                    <a href="{{ route('admin.dashboard') }}" title=""
+                        class="whitespace-nowrap rounded font-medium transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-2 hover:text-opacity-50">
+                        Dashboard </a>
+                @else
+                    <a href="{{ route('admin.dashboard') }}" title=""
+                        class="whitespace-nowrap rounded font-medium transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-2 hover:text-opacity-50">
+                        Iniciar sesión </a>
+                @endauth
+            @endif
+
             <a href="{{ route('cotizacion.index') }}" title=""
                 class="whitespace-nowrap rounded-xl bg-blue-700 px-5 py-3 font-medium text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2 hover:bg-blue-600"><i
                     class="fa-solid fa-cart-shopping"></i></a>
