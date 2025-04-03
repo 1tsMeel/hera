@@ -15,6 +15,8 @@ Route::resource('brands', BrandController::class);
 Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.index');
 Route::post('/contacts', [ContactsController::class, 'store'])->name('contacts.store');
 
+Route::get('/import/products', [ProductController::class, 'importGet'])->name('product.importGet');
+Route::post('/import/products', [ProductController::class, 'importPost'])->name('product.importPost');
 Route::resource('cotizacion', CotizacionController::class);
 
 //Route::get('/', [CartController::class, 'shop'])->name('shop');
